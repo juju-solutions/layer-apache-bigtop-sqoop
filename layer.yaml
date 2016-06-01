@@ -1,6 +1,7 @@
 repo: git@github.com:juju-solutions/layer-apache-bigtop-kafka.git
-includes:
+includes: 
   - 'layer:apache-bigtop-base'
+  - 'layer:hadoop-client'
 options:
   hadoop-client:
     groups:

@@ -7,7 +7,7 @@ description: |
   programs, coupled with infrastructure for evaluating these programs.
   Learn more at http://pig.apache.org.
 tags: ["bigdata", "hadoop", "apache"]
-provides:
-  hadoop:
-    interface: hadoop-plugin
-    scope: container
+#provides:
+#  hadoop:
+#    interface: hadoop-plugin
+#    scope: container
