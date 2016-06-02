@@ -22,6 +22,7 @@ class Pig(object):
                 env['PATH'] = ':'.join([env['PATH'], pig_bin])
             env['PIG_CONF_DIR'] = self.dist_config.path('pig_conf')
             env['PIG_HOME'] = self.dist_config.path('pig')
+            env['HADOOP_CONF_DIR'] = self.dist_config.path('hadoop_conf')
 
     def configure_local(self):
         """In local mode, configure Pig with PIG_HOME as the classpath."""
