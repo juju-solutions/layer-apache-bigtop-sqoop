@@ -1,13 +1,15 @@
 from charmhelpers.core import hookenv
 from charms.layer.bigtop_pig import Pig 
 from charms.reactive import is_state, set_state, remove_state, when, when_not
+from charms.layer.hadoop_client import get_dist_config
 
 
 @when('bigtop.available')
 @when_not('pig.installed')
 def install_pig():
     hookenv.status_set('maintenance', 'Installing Pig')
-    pig = Pig()
+    dist = get_dist_config
+    pig = Pig(dist)
     pig.install_pig()
     set_state('pig.installed')
 
@@ -15,8 +17,9 @@ def install_pig():
 @when_not('pig.available')
 def configure_pig():
     hookenv.status_set('maintenance', 'Installing Pig')
-    pig = Pig()
-    hadoop_ready = is_state('hadoop.ready')
+    dist = get_dist_config
+    pig = Pig(dist)
+    hadoop_ready = is_state('hadoop.yarn.ready')
     if hadoop_ready:
         hookenv.status_set('maintenance', 'configuring pig (mapreduce)')
         hookenv.log('YARN is ready, configuring Apache Pig in MapReduce mode')
@@ -36,13 +39,13 @@ def configure_pig():
 
 
 @when('pig.configured.yarn')
-@when_not('hadoop.ready')
+@when_not('hadoop.yarn.ready')
 def reconfigure_local():
     configure_pig()
 
 
 @when('pig.configured.local')
-@when('hadoop.ready')
+@when('hadoop.yarn.ready')
 def reconfigure_yarn(hadoop):
     configure_pig()
 
