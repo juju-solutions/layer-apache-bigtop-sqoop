@@ -10,9 +10,14 @@ class Pig(object):
         self.dist_config = dist_config #or utils.DistConfig(data=layer.options('apache-bigtop-base'))
 
     def install_pig(self):
-        roles = ['hadoop-client', 'pig-client']
+        roles = ['hadoop-client']
 
         bigtop = Bigtop()
+        bigtop.render_site_yaml(roles=roles)
+        bigtop.trigger_puppet()
+
+        roles = ['pig-client']
+
         bigtop.render_site_yaml(roles=roles)
         bigtop.trigger_puppet()
 
