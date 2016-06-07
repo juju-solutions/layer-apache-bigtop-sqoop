@@ -11,6 +11,8 @@ def install_sqoop(db):
     dist = get_dist_config()
     sqoop = Sqoop(dist)
     sqoop.install_sqoop()
+    sqoop.open_ports()
+    sqoop.start()
     set_state('sqoop.installed')
 
 @when('sqoop.installed')
