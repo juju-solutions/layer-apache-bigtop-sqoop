@@ -1,5 +1,5 @@
 ## Overview
 
-Apache Bigtop Pig
+Apache Bigtop Oozie
 
 To do: metadata
