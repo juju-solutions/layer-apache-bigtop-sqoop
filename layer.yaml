@@ -2,7 +2,6 @@ repo: git@github.com:juju-solutions/layer-apache-bigtop-sqoop.git
 includes: 
   - 'layer:hadoop-client'
   - 'layer:apache-bigtop-base'
-  - 'interface:mysql'
 options:
   hadoop-client:
     groups:
@@ -35,9 +34,11 @@ options:
             group: 'hadoop'
             perms: 0777
     ports:
-      sqoop: 
-        http: 12000
-        admin: 12001
+      sqoop_http: 
+        port: 12000
+        exposed_on: sqoop
+      sqoop_admin:
+        port: 12001
         exposed_on: sqoop
     silent: True
   apache-bigtop-base:
