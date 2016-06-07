@@ -1,5 +1,5 @@
 ## Overview
 
-Apache Bigtop Oozie
+Apache Bigtop Sqoop
 
 To do: metadata

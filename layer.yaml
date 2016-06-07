@@ -1,4 +1,4 @@
-repo: git@github.com:juju-solutions/layer-apache-bigtop-oozie.git
+repo: git@github.com:juju-solutions/layer-apache-bigtop-sqoop.git
 includes: 
   - 'layer:hadoop-client'
   - 'layer:apache-bigtop-base'
@@ -8,41 +8,37 @@ options:
     groups:
         - 'hadoop'
     users:
-        oozie:
+        sqoop:
             groups: ['hadoop']
     dirs:
         hadoop:
             path: '/usr/lib/hadoop'
         hadoop_conf:
             path: '/etc/hadoop/conf'
-        oozie:
-            path: '/usr/lib/oozie'
-            owner: 'oozie'
+        sqoop:
+            path: '/usr/lib/sqoop'
+            owner: 'sqoop'
             group: 'hadoop'
-        oozie_conf:
-            path: '/etc/oozie/conf'
-            owner: 'oozie'
+        sqoop_conf:
+            path: '/etc/sqoop/conf'
+            owner: 'sqoop'
             group: 'hadoop'
             perms: 0755
-        oozie_log:
-            path: '/var/log/oozie'
-            owner: 'oozie'
+        sqoop_log:
+            path: '/var/log/sqoop'
+            owner: 'sqoop'
             group: 'hadoop'
             perms: 0777
-        oozie_data:
-            path: '/var/lib/oozie'
-            owner: 'oozie'
+        sqoop_data:
+            path: '/var/lib/sqoop'
+            owner: 'sqoop'
             group: 'hadoop'
             perms: 0777
-    
-        ext22:
-            path: '/usr/lib/oozie/libext'
-            owner: 'oozie'
-            group: 'hadoop'
     ports:
-      oozie: 
-        port: 11000
-        exposed_on: oozie
+      sqoop: 
+        http: 12000
+        admin: 12001
+        exposed_on: sqoop
     silent: True
   apache-bigtop-base:
     packages:

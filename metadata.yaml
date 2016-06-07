@@ -1,15 +1,12 @@
-name: apache-bigtop-oozie
-summary: Oozie stuff
+name: apache-bigtop-sqoop
+summary: Sqoop stuff
 maintainer: Juju Big Data <bigdata@lists.ubuntu.com>
 description: |
-  Apache Oozie is ...
+  Apache Sqoop is ...
 tags: ["bigdata", "hadoop", "apache"]
 provides:
   client:
-    interface: oozie
-requires:
-  db:
-    interface: mysql
+    interface: sqoop
 #  hadoop:
 #    interface: hadoop-plugin
 #    scope: container

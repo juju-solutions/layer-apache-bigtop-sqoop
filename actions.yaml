@@ -1,2 +1,2 @@
 smoke-test:
-    description: Verify that Oozie is working.
+    description: Verify that Sqoop is working.
